@@ -19,7 +19,7 @@ public class TargetNumber {
 
         public int solution(int[] numbers, int num) {
             int answer = 0;
-            answer= dfs(numbers,num,0,0);
+            answer= dfs(numbers,0,num,0);
 
             return answer;
         }
