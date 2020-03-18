@@ -17,8 +17,10 @@ public class HIndex {
                 for(int j = 0 ; j< citations.length;j++){
                     if(i <= citations[j]) h++;
                 }
-                if( i >=citations.length-h && i <= h )
+                if( i >=citations.length-h && i <= h ){
+                     System.out.println(i);
                     answer = i;
+                }
             }
 
             return answer;
