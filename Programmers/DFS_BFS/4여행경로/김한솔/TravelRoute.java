@@ -14,7 +14,7 @@ public class TravelRoute {
 
 	public static void main(String[] args) {
 		// String[][] tickets = { { "ICN", "JFK" }, { "HND", "IAD" }, { "JFK", "HND" }};
-		String[][] tickets = { { "ICN", "SFO" }, { "ICN", "ATL" }, { "SFO", "ATL" }, { "ATL", "ICN" }, { "ATL", "SFO" }};
+		String[][] tickets = { { "ICN", "COO" }, { "ICN", "BOO" }, { "COO", "ICN" }, { "BOO", "DOO" }};
 		
 		TravelRouteSolution tSolution = new TravelRouteSolution();
 		tSolution.solution(tickets);
@@ -51,6 +51,7 @@ class TravelRouteSolution {
 		HashMap<String, ArrayList<Flight>> ticketMaps = new HashMap<String, ArrayList<Flight>>();
 		ArrayList<Flight> flights = new ArrayList<>();
 		ArrayList<String> routes = new ArrayList<>();
+		ArrayList<String> temp = new ArrayList<>();
 
 		Arrays.sort(tickets, new Comparator<String[]>() {
 
@@ -64,13 +65,12 @@ class TravelRouteSolution {
 				return v1.compareTo(v2);
 			}
 		});
-		for (int i = 0; i < tickets.length; i++) {
-			System.out.println(tickets[i][0] + ", " + tickets[i][1]);
-		}
+//		for (int i = 0; i < tickets.length; i++) {
+//			System.out.println(tickets[i][0] + ", " + tickets[i][1]);
+//		}
 		
 		for (int i = 0; i < tickets.length; i++) {
 			if(i+1 < tickets.length && tickets[i][0].equals(tickets[i+1][0])) {
-				System.out.println("ddd");
 				flights.add(new Flight(tickets[i][1]));
 				continue;
 			}
@@ -79,43 +79,48 @@ class TravelRouteSolution {
 			
 			flList.addAll(flights);
 			for(int j=0; j<flList.size(); j++) 
-				System.out.println(j+", "+flList.get(j).getEndPoint());
 			ticketMaps.put(tickets[i][0], flList);
 			flights.clear();
 		}
-
-//		Set<String> keys = ticketMaps.keySet();
-//		for(String key : keys) {
-//			System.out.println(key + "---");
-//			ArrayList<Flight> flights2 = ticketMaps.get(key);
-//			for(int i=0; i<flights2.size(); i++) 
-//				System.out.println(flights2.get(i).getEndPoint());
-//		}
 		
-		dfs("ICN", ticketMaps, routes);
+		dfs("ICN", ticketMaps, routes, temp, 0, tickets.length);
 		
 		answer = new String[routes.size()];
 //		System.out.println(routes.size());
 		answer = routes.toArray(answer);
 		
-//		for(int i=0; i<answer.length; i++)
-//			System.out.println(answer[i] + " ");
+		for(int i=0; i<routes.size(); i++)
+			System.out.println(routes.get(i) + " ");
 		return answer;
 	}
 	
-	public void dfs(String startPoint, HashMap<String, ArrayList<Flight>> maps, ArrayList<String> routes) {
+	public boolean dfs(String startPoint, HashMap<String, ArrayList<Flight>> maps, 
+			ArrayList<String> routes, ArrayList<String> temp, int visitedCount, int size) {
+				
+		temp.add(startPoint);
 		
-		//System.out.println(startPoint);
-		routes.add(startPoint); // 지역 추가
+		if(visitedCount == size) {
+			routes.addAll(temp);
+			return true;
+		}
+				
 		ArrayList<Flight> flightList = maps.get(startPoint);
-			
-		for(int i=0; i<flightList.size(); i++) {
-			if(!flightList.get(i).isChecked()) { // 아직 티켓을 사용하지 않은 경우
-				maps.get(startPoint).get(i).setChecked(true); // 티켓 사용 표기
-				dfs(flightList.get(i).getEndPoint(), maps, routes);
-				return;
+		
+		if(flightList != null) {
+			for(int i=0; i<flightList.size(); i++) {
+				if(!flightList.get(i).isChecked()) { // 아직 티켓을 사용하지 않은 경우
+					maps.get(startPoint).get(i).setChecked(true); // 티켓 사용 표기
+					boolean flag = dfs(flightList.get(i).getEndPoint(), maps, routes, temp, visitedCount+1, size);
+					if(flag)
+						return true;
+					
+					maps.get(startPoint).get(i).setChecked(false); // 티켓 사용 표기
+				}
 			}
 		}
+		
+		temp.remove(temp.size()-1);
+		return false;
 	}
 
 }
