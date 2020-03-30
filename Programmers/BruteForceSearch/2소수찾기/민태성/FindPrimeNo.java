@@ -68,18 +68,15 @@ public class FindPrimeNo {
                 // depth가 0부터 시작했을 경우 depth == r에서 리턴
                 if (depth == r) {
                     if (res.length > 1) {
-                        for (int i = 0; i < res.length; i++) {
-                            System.out.println("i = " + i + " , res[" + i + "] =" + res[i]);
+                        for (int i = 0; i < res.length; i++) { 
                             str += res[i];
                         }
                         System.out.println("str = " + str);
                         if (isPrime(Integer.parseInt(str))) {
-                            System.out.println("answer=  " + Integer.parseInt(str));
                             set.add(Integer.parseInt(str));
                         }
                     } else {
                         if (isPrime(res[0])) {
-                            System.out.println("1개" + res[0]);
                             set.add(res[0]);
                         }
                     }
