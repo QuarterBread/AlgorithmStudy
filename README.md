@@ -3,3 +3,4 @@
 - <a href="https://github.com/QuarterBread/AlgorithmStudy/tree/master/Programmers/DFS_BFS">깊이/너비 우선 탐색</a>
 - <a href="https://github.com/QuarterBread/AlgorithmStudy/tree/master/Programmers/Sort">정렬</a>
 - <a href="https://github.com/QuarterBread/AlgorithmStudy/tree/master/Programmers/BruteForceSearch">완전탐색</a>
+- <a href="https://github.com/QuarterBread/AlgorithmStudy/tree/master/Programmers/Greedy">탐욕법</a>
