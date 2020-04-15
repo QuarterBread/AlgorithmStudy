@@ -1,4 +1,4 @@
-## DFS_BFS
+## Brute_Force_Search
 
 ### <a href="https://programmers.co.kr/learn/courses/30/parts/12421">완전탐색</a>
 - <a href="https://programmers.co.kr/learn/courses/30/lessons/42840">1 모의고사</a> / <a href="https://github.com/QuarterBread/AlgorithmStudy/tree/master/Programmers/BruteForceSearch/1%EB%AA%A8%EC%9D%98%EA%B3%A0%EC%82%AC">풀이</a>

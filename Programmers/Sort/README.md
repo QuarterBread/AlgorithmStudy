@@ -1,4 +1,4 @@
-## Hash
+## Sort
 
 ### <a href="https://programmers.co.kr/learn/courses/30/parts/12077">정렬</a>
 - <a href="https://programmers.co.kr/learn/courses/30/lessons/42748">1 K번째 수</a> / <a href="https://github.com/QuarterBread/AlgorithmStudy/tree/master/Programmers/Sort/1K%EB%B2%88%EC%A7%B8%20%EC%88%98">풀이</a>

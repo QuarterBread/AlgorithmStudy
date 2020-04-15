@@ -1,4 +1,4 @@
-## Greedy
+## Stack_Queue
 
 ### <a href="https://programmers.co.kr/learn/courses/30/parts/12421">탐욕법</a>
 - <a href="https://programmers.co.kr/learn/courses/30/lessons/42588">1 탑</a> / <a href="https://github.com/QuarterBread/AlgorithmStudy/blob/master/Programmers/Stack_Queue/1%ED%83%91">풀이</a>
