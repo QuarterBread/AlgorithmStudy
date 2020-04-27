@@ -4,7 +4,7 @@ import java.util.Queue;
 public class Thieves {
     public static void main(String[] args) {
         Solution s = new Solution();
-        int[] money = {1, 3, 2, 3, 2, 5, 7};
+        int[] money = {1, 3,1 , 3, 2, 5, 7};
         // 1 , 2, 2
         // 1, 2,5
         // 1,3, 5
@@ -15,31 +15,31 @@ public class Thieves {
     }
 
     static class Solution {
-        int answer = 0;
-        int max = 0;
+
 
         public int solution(int[] money) {
             int max = 0;
-            int arr[] = new int[money.length];
-            int firstStart = 0;
-            int secondStart = 1;
+            int answer = 0;
 
-            int[] memo = new int[money.length];
-            boolean visited[] = new boolean[money.length];
+            int[] memo1 = new int[money.length-1];
+            int[] memo2 = new int[money.length];
 
-            memo[0] = money[0];
-            visited[0] = true;
+            memo1[0] = money[0];
+            memo1[1] = money[0];
 
-
-            for (int i = 2; i < money.length; i++) {
-                int preIdx = (i + money.length - 1) % money.length;
-                int postIdx = (i + money.length + 1) % money.length;
-
-                if (!visited[i] && !visited[preIdx] && !visited[postIdx]) {
-                   
-                }
-
+            for (int i = 2; i < money.length-1; i++) {
+                memo1[i] = Math.max(memo1[i-2]+ money[i] , memo1[i-1]);
             }
+
+            memo2[0] = 0;
+            memo2[1] = money[1];
+
+            for(int i = 2; i < money.length; i++){
+                memo2[i] = Math.max(memo2[i-2]+ money[i],memo2[i-1]);
+            }
+
+            answer= Math.max((memo1[money.length-2]) , memo2[money.length-1]);
+
 
             return answer;
         }
