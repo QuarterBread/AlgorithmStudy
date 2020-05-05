@@ -7,3 +7,4 @@
 - <a href="https://github.com/QuarterBread/AlgorithmStudy/tree/master/Programmers/Stack_Queue">스택/큐</a>
 - <a href="https://github.com/QuarterBread/AlgorithmStudy/tree/master/Programmers/Dynamic_Programming">동적계획법</a>
 - <a href="https://github.com/QuarterBread/AlgorithmStudy/tree/master/Programmers/Heap">힙</a>
+- <a href="https://github.com/QuarterBread/AlgorithmStudy/tree/master/Programmers/Binary_Search">이분탐색</a>
